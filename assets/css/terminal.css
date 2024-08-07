@@ -1,0 +1,24 @@
+:root{
+    --terminal-bg: #000000;
+    --terminal-color: #ffffff;
+    --terminal-font-name: monospace;
+    --termina-font-size: 14px;
+}
+
+body{
+    background-color: var(--terminal-bg);
+    color: var(--terminal-color);
+    font-family: var(--terminal-font-name);
+    font-size: var(--termina-font-size);
+}
+
+#input {
+    width: 78%;
+    background-color: transparent;
+    color: var(--terminal-color);
+    border: none;
+    outline: none;
+    font-family: var(--terminal-font-name);
+    font-size: var(--termina-font-size);
+    margin-top: 10px;
+}
