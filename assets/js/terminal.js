@@ -17,7 +17,7 @@ input.addEventListener('keydown', (event) => {
 
 function processCommand(command) {
     const output = document.createElement('div');
-    output.textContent = `${username}@${computername} ~ / $ ${command}`;
+    output.textContent = `${username}@${computername} ~ $ ${command}`;
     terminal.appendChild(output);
 
     // Basic command handling
