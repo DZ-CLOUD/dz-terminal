@@ -31,6 +31,13 @@ function processCommand(command) {
         case 'dir':
             printToTerminal('');
             break;
+        case '<':
+        case '>':
+            printToTerminal("bash: syntax error near unexpected token `newline'");
+            break;
+        case '':
+            printToTerminal("");
+            break;
         case 'clear':
             terminal.innerHTML = '';
             break;
