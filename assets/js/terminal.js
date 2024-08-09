@@ -1,8 +1,10 @@
 const terminal = document.getElementById('terminal');
 const input = document.getElementById('input');
 
+const lang = {}
 var username = "user";
 var computername = "Ubuntu2404LTS"
+var userLang = "en";
 
 document.getElementById("terminal-username").innerText = username;
 document.getElementById("terminal-pcname").innerText = computername;
@@ -29,6 +31,9 @@ function processCommand(command) {
             break;
         case 'clear':
             terminal.innerHTML = '';
+            break;
+        case 'restart':
+            location.reload();
             break;
         case 'ls':
         case 'dir':
@@ -59,4 +64,13 @@ function printToTerminal(text) {
     output.textContent = text;
     terminal.appendChild(output);
     window.scrollTo(0, document.body.scrollHeight)
+}
+
+function init() {
+    fetch(`../assets/lang/${userLang || "en"}.json`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+
+        })
 }
