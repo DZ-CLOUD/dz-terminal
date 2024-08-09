@@ -3,6 +3,15 @@ const input = document.getElementById('input');
 
 const libs = [
     {
+        "package.version": "v1.0.0",
+        "package.name": "de.dzcloud.options",
+        "branch": "feature/DZT-0004",
+        "option": {
+            "username": "user",
+            "pc-name": "Ubuntu"
+        }
+    },
+    {
         "command": "terminal",
         "package.version": "v1.0.0",
         "package.name": "de.dzcloud.terminal",
@@ -33,8 +42,8 @@ const libs = [
 ];
 
 var lang = {}
-var username = "user";
-var computername = "Ubuntu2404LTS"
+var username = libs.find(a => a["package.name"] === "de.dzcloud.options").option.username || "user";
+var computername = libs.find(a => a["package.name"] === "de.dzcloud.options").option["pc-name"] || "Ubuntu2404LTS"
 var userLang = libs.find(a => a["package.name"] === "de.dzcloud.terminal").option.language || "en";
 
 document.getElementById("terminal-username").innerText = username;
