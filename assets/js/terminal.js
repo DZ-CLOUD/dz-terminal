@@ -17,7 +17,7 @@ input.addEventListener('keydown', (event) => {
 
 function processCommand(command) {
     const args = command.split(" ");
-    
+
     const output = document.createElement('div');
     output.textContent = `${username}@${computername} ~ $ ${command}`;
     terminal.appendChild(output);
@@ -26,6 +26,9 @@ function processCommand(command) {
     switch (args[0]) {
         case 'help':
             printToTerminal('Available commands: help, clear, echo');
+            break;
+        case 'ls':
+            printToTerminal('');
             break;
         case 'clear':
             terminal.innerHTML = '';
