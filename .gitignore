@@ -131,8 +131,5 @@ dist
 
 .vscode/
 .idea/
-lib.json
 apt.json
 *.out
-apt.json
-lib.json
