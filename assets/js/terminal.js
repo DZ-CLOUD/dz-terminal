@@ -32,7 +32,7 @@ function processCommand(command) {
             if (command.startsWith('echo ')) {
                 printToTerminal(command.slice(5));
             } else {
-                printToTerminal(`Command not found: ${command}`);
+                printToTerminal(`Command not found: ${command.split(" ")[0]}`);
             }
             break;
     }
