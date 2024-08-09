@@ -3,6 +3,15 @@ const input = document.getElementById('input');
 
 const lang = {}
 var username = "user";
+
+
+const libs = [
+    {
+        "command": "git",
+        "version": "v23.9.1",
+        "package.name": "com.git.gitcli"
+    }
+];
 var computername = "Ubuntu2404LTS"
 var userLang = "en";
 
@@ -27,11 +36,14 @@ function processCommand(command) {
     // Basic command handling
     switch (args[0]) {
         case 'help':
-            printToTerminal('Available commands: help, clear, echo');
+            printToTerminal('Available commands: help, clear, echo, git');
             break;
         case 'clear':
             terminal.innerHTML = '';
             break;
+
+        case 'echo':
+            printToTerminal(command.slice(5));
         case 'restart':
             location.reload();
             break;
@@ -47,8 +59,8 @@ function processCommand(command) {
             printToTerminal("");
             break;
         default:
-            if (command.startsWith('echo ')) {
-                printToTerminal(command.slice(5));
+            if (libs.find(a => a.command === args[0])) {
+                loadLib(args[0], command);
             } else {
                 printToTerminal(`${command.split(" ")[0]}: command not found`);
             }
@@ -59,12 +71,40 @@ function processCommand(command) {
     terminal.scrollTop = terminal.scrollHeight;
 }
 
+let isLoadingLib = false;  // Flag to prevent multiple concurrent library loads
+
+async function loadLib(libPackageName, command) {
+    if (isLoadingLib) return;  // Prevent re-entry if already loading a library
+
+    isLoadingLib = true;
+    console.log("Access LibLoader v0.3.2");
+
+    try {
+        const module = await import(`./../../lib/${libPackageName}/index.js`);
+        if (module && typeof module.processCommand === 'function') {
+            const result = module.processCommand(command);
+            printToTerminal(result);
+        } else {
+            printToTerminal(`${libPackageName}: Error package doesn't export processCommand.`);
+        }
+    } catch (error) {
+        console.error(error);
+        printToTerminal("LibLoader: Library is wrong compiled.");
+    } finally {
+        isLoadingLib = false;
+    }
+}
+
 function printToTerminal(text) {
     const output = document.createElement('div');
     output.textContent = text;
     terminal.appendChild(output);
-    window.scrollTo(0, document.body.scrollHeight)
+   window.scrollTo(0, document.body.scrollHeight)
 }
+
+document.addEventListener("click", () => {
+    input.focus();
+});
 
 function init() {
     fetch(`../assets/lang/${userLang || "en"}.json`)
