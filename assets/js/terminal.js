@@ -12,6 +12,7 @@ input.addEventListener('keydown', (event) => {
         const command = input.value;
         processCommand(command);
         input.value = '';
+
     }
 });
 
@@ -27,6 +28,9 @@ function processCommand(command) {
         case 'help':
             printToTerminal('Available commands: help, clear, echo');
             break;
+        case 'clear':
+            terminal.innerHTML = '';
+            break;
         case 'ls':
         case 'dir':
             printToTerminal('');
@@ -37,9 +41,6 @@ function processCommand(command) {
             break;
         case '':
             printToTerminal("");
-            break;
-        case 'clear':
-            terminal.innerHTML = '';
             break;
         default:
             if (command.startsWith('echo ')) {
@@ -58,4 +59,5 @@ function printToTerminal(text) {
     const output = document.createElement('div');
     output.textContent = text;
     terminal.appendChild(output);
+    window.scrollTo(0, document.body.scrollHeight)
 }
