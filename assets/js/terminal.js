@@ -11,9 +11,9 @@ const libs = [
             "font-name": "monospace 11",
             "color": "#ffffff",
             "background-color": "#000000",
-            "clock-time-show-seconds": false,
-            "clock-date-show-weekday": false,
-            "clock-date-show-year": false,
+            "clock-time-show-seconds": "false",
+            "clock-date-show-weekday": "false",
+            "clock-date-show-year": "false",
             "language": "en"
         }
     },
