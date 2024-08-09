@@ -7,9 +7,10 @@ var username = "user";
 
 const libs = [
     {
-        "command": "git",
-        "version": "v23.9.1",
-        "package.name": "com.git.gitcli"
+        "command": "self",
+        "package.version": "v1.0.0",
+        "package.name": "de.dzcloud.terminal",
+        "branch": "feature/DZT-0001"
     }
 ];
 var computername = "Ubuntu2404LTS"
@@ -60,7 +61,7 @@ function processCommand(command) {
             break;
         default:
             if (libs.find(a => a.command === args[0])) {
-                loadLib(args[0], command);
+                loadLib(libs.find(a => a.command === args[0])["package.name"], command);
             } else {
                 printToTerminal(`${command.split(" ")[0]}: command not found`);
             }
