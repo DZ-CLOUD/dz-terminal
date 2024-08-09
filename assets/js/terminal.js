@@ -3,18 +3,33 @@ const input = document.getElementById('input');
 
 const lang = {}
 var username = "user";
-
+var computername = "Ubuntu2404LTS"
+var userLang = "en";
 
 const libs = [
     {
-        "command": "self",
+        "command": "terminal",
         "package.version": "v1.0.0",
         "package.name": "de.dzcloud.terminal",
-        "branch": "feature/DZT-0001"
+        "branch": "feature/DZT-0001",
+        "option": {
+            "font-name": "monospace 11"
+        }
+    },
+    {
+        "command": "dzpkm",
+        "package.version": "v128.9.1",
+        "package.name": "de.dzcloud.dzpkm",
+        "branch": "latest/dzpkm-128.9.1"
+    },
+    {
+        "command": "setenv",
+        "package.version": "0.2.1",
+        "package.name": "de.dzcloud.setenv",
+        "package.size": 459,
+        "branch": "release/stable-v0.2.1"
     }
 ];
-var computername = "Ubuntu2404LTS"
-var userLang = "en";
 
 document.getElementById("terminal-username").innerText = username;
 document.getElementById("terminal-pcname").innerText = computername;
@@ -100,7 +115,7 @@ function printToTerminal(text) {
     const output = document.createElement('div');
     output.textContent = text;
     terminal.appendChild(output);
-   window.scrollTo(0, document.body.scrollHeight)
+    window.scrollTo(0, document.body.scrollHeight)
 }
 
 document.addEventListener("click", () => {
