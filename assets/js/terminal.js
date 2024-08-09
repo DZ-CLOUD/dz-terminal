@@ -1,45 +1,11 @@
 const terminal = document.getElementById('terminal');
 const input = document.getElementById('input');
 
-const libs = [
-    {
-        "package.version": "v1.0.0",
-        "package.name": "de.dzcloud.options",
-        "branch": "feature/DZT-0004",
-        "option": {
-            "username": "user",
-            "pc-name": "Ubuntu"
-        }
-    },
-    {
-        "command": "terminal",
-        "package.version": "v1.0.0",
-        "package.name": "de.dzcloud.terminal",
-        "branch": "feature/DZT-0001",
-        "option": {
-            "font-name": "monospace 11",
-            "color": "#ffffff",
-            "background-color": "#000000",
-            "clock-time-show-seconds": "false",
-            "clock-date-show-weekday": "false",
-            "clock-date-show-year": "false",
-            "language": "en"
-        }
-    },
-    {
-        "command": "dzpkm",
-        "package.version": "v128.9.1",
-        "package.name": "de.dzcloud.dzpkm",
-        "branch": "latest/dzpkm-128.9.1"
-    },
-    {
-        "command": "setenv",
-        "package.version": "0.2.1",
-        "package.name": "de.dzcloud.setenv",
-        "package.size": 459,
-        "branch": "release/stable-v0.2.1"
-    }
-];
+const libs = JSON.parse(localStorage.getItem("terminalrc"));
+if (!libs) {
+    init();
+    location.reload();
+}
 
 var lang = {}
 var username = libs.find(a => a["package.name"] === "de.dzcloud.options").option.username || "user";
@@ -134,7 +100,17 @@ function printToTerminal(text) {
 }
 
 function init() {
+    const libslocal = localStorage.getItem("terminalrc");
+    if (!libslocal) {
+        fetch(`../../lib.json`)
+            .then(res => res.json())
+            .then(data => [
+                localStorage.setItem("terminalrc", JSON.stringify(data.libs))
+        ])
+
+    }
     lang = {};
+
     fetch(`../assets/lang/${userLang || "en"}.json`)
         .then(res => res.json())
         .then(data => {
