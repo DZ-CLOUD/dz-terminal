@@ -82,3 +82,7 @@ function printToTerminal(text) {
     output.textContent = text;
     terminal.appendChild(output);
 }
+
+document.addEventListener("click", () => {
+    input.focus();
+});
