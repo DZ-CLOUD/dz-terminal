@@ -1,11 +1,6 @@
 const terminal = document.getElementById('terminal');
 const input = document.getElementById('input');
 
-const lang = {}
-var username = "user";
-var computername = "Ubuntu2404LTS"
-var userLang = "en";
-
 const libs = [
     {
         "command": "terminal",
@@ -13,7 +8,13 @@ const libs = [
         "package.name": "de.dzcloud.terminal",
         "branch": "feature/DZT-0001",
         "option": {
-            "font-name": "monospace 11"
+            "font-name": "monospace 11",
+            "color": "#ffffff",
+            "background-color": "#000000",
+            "clock-time-show-seconds": false,
+            "clock-date-show-weekday": false,
+            "clock-date-show-year": false,
+            "language": "en"
         }
     },
     {
@@ -30,6 +31,11 @@ const libs = [
         "branch": "release/stable-v0.2.1"
     }
 ];
+
+var lang = {}
+var username = "user";
+var computername = "Ubuntu2404LTS"
+var userLang = libs.find(a => a["package.name"] === "de.dzcloud.terminal").option.language || "en";
 
 document.getElementById("terminal-username").innerText = username;
 document.getElementById("terminal-pcname").innerText = computername;
@@ -78,7 +84,7 @@ function processCommand(command) {
             if (libs.find(a => a.command === args[0])) {
                 loadLib(libs.find(a => a.command === args[0])["package.name"], command);
             } else {
-                printToTerminal(`${command.split(" ")[0]}: command not found`);
+                printToTerminal(`${lang["terminal.error.command.notfound"].replace("%s", args[0])}`);
             }
             break;
     }
@@ -118,15 +124,17 @@ function printToTerminal(text) {
     window.scrollTo(0, document.body.scrollHeight)
 }
 
+function init() {
+    lang = {};
+    fetch(`../assets/lang/${userLang || "en"}.json`)
+        .then(res => res.json())
+        .then(data => {
+            lang = data
+        })
+}
+
 document.addEventListener("click", () => {
     input.focus();
 });
 
-function init() {
-    fetch(`../assets/lang/${userLang || "en"}.json`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-
-        })
-}
+init()
