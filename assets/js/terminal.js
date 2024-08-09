@@ -16,12 +16,14 @@ input.addEventListener('keydown', (event) => {
 });
 
 function processCommand(command) {
+    const args = command.split(" ");
+    
     const output = document.createElement('div');
     output.textContent = `${username}@${computername} ~ $ ${command}`;
     terminal.appendChild(output);
 
     // Basic command handling
-    switch (command) {
+    switch (args[0]) {
         case 'help':
             printToTerminal('Available commands: help, clear, echo');
             break;
