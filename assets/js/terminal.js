@@ -12,7 +12,6 @@ input.addEventListener('keydown', (event) => {
         const command = input.value;
         processCommand(command);
         input.value = '';
-
     }
 });
 
