@@ -1,8 +1,9 @@
 const terminal = document.getElementById('terminal');
 const input = document.getElementById('input');
 
+const lang = {}
 var username = "user";
-var computername = "Ubuntu2404LTS";
+
 
 const libs = [
     {
@@ -11,6 +12,8 @@ const libs = [
         "package.name": "com.git.gitcli"
     }
 ];
+var computername = "Ubuntu2404LTS"
+var userLang = "en";
 
 document.getElementById("terminal-username").innerText = username;
 document.getElementById("terminal-pcname").innerText = computername;
@@ -25,6 +28,7 @@ input.addEventListener('keydown', (event) => {
 
 function processCommand(command) {
     const args = command.split(" ");
+
     const output = document.createElement('div');
     output.textContent = `${username}@${computername} ~ $ ${command}`;
     terminal.appendChild(output);
@@ -37,14 +41,28 @@ function processCommand(command) {
         case 'clear':
             terminal.innerHTML = '';
             break;
+
         case 'echo':
             printToTerminal(command.slice(5));
+        case 'restart':
+            location.reload();
+            break;
+        case 'ls':
+        case 'dir':
+            printToTerminal('');
+            break;
+        case '<':
+        case '>':
+            printToTerminal("bash: syntax error near unexpected token `newline'");
+            break;
+        case '':
+            printToTerminal("");
             break;
         default:
             if (libs.find(a => a.command === args[0])) {
                 loadLib(args[0], command);
             } else {
-                printToTerminal(`Command not found: ${command}`);
+                printToTerminal(`${command.split(" ")[0]}: command not found`);
             }
             break;
     }
@@ -81,8 +99,18 @@ function printToTerminal(text) {
     const output = document.createElement('div');
     output.textContent = text;
     terminal.appendChild(output);
+   window.scrollTo(0, document.body.scrollHeight)
 }
 
 document.addEventListener("click", () => {
     input.focus();
 });
+
+function init() {
+    fetch(`../assets/lang/${userLang || "en"}.json`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+
+        })
+}
