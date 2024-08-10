@@ -1,3 +1,4 @@
 {
-    "terminal.error.command.notfound": "%s: command not found"
+    "terminal.error.command.notfound": "%s: command not found",
+    "terminal.promt.enter.passphase": "Enter passphase"
 }
