@@ -6,7 +6,9 @@
             "branch": "feature/DZT-0004",
             "option": {
                 "username": "user",
-                "pc-name": "Ubuntu"
+                "pc-name": "Ubuntu",
+                "is-sudo": false,
+                "password": ""
             }
         },
         {
@@ -36,6 +38,18 @@
             "package.name": "de.dzcloud.setenv",
             "package.size": 459,
             "branch": "release/stable-v0.2.1"
+        },
+        {
+            "command": "rm",
+            "version": "0.2.1",
+            "package.name": "terminal.command.rm",
+            "package.size": 23
+        },
+        {
+            "command": "sudo",
+            "version": "0.2.1",
+            "package.name": "terminal.command.sudo",
+            "package.size": 23
         }
     ]
 }

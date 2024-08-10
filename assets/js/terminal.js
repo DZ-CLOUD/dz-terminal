@@ -52,6 +52,9 @@ function processCommand(command) {
         case '>':
             printToTerminal("bash: syntax error near unexpected token `newline'");
             break;
+        case 'source':
+            loadTerminalVariables();
+            break;
         case '':
             printToTerminal("");
             break;
@@ -106,16 +109,39 @@ function init() {
             .then(res => res.json())
             .then(data => [
                 localStorage.setItem("terminalrc", JSON.stringify(data.libs))
-        ])
+            ])
+            .catch(err => {
+                printToTerminal(`${err}`)
+            })
 
     }
-    lang = {};
 
+    lang = {};
     fetch(`../assets/lang/${userLang || "en"}.json`)
         .then(res => res.json())
         .then(data => {
             lang = data
+        }).catch(err => {
+            printToTerminal(`${err}`)
         })
+
+    loadTerminalVariables()
+
+}
+
+function loadTerminalVariables() {
+    const tlibo = libs.find(a => a["package.name"] === "de.dzcloud.terminal").option
+    // In your JavaScript file
+    document.documentElement.style.setProperty('--terminal-font-name', tlibo["font-name"].split(" ")[0]);
+    document.documentElement.style.setProperty('--terminal-font-size', tlibo["font-name"].split(" ")[1] + "pt");
+    document.documentElement.style.setProperty('--terminal-color', tlibo["color"]);
+    document.documentElement.style.setProperty('--terminal-bg', tlibo["background-color"]);
+    libs.find(a => a["package.name"] === "de.dzcloud.options").option["is-sudo"] = false;
+    saveChanges();
+}
+
+function saveChanges() {
+    localStorage.setItem("terminalrc", JSON.stringify(libs))
 }
 
 document.addEventListener("click", () => {
