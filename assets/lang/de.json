@@ -1,3 +1,5 @@
 {
-    "terminal.error.command.notfound": "%s: Befehl nicht gefunden"
+    "terminal.error.command.notfound": "%s: Befehl nicht gefunden",
+    "terminal.error.passphase.invalid": "Zugriff verweigert: Passphase ist ungültig.",
+    "terminal.promt.enter.passphase": "Geben Sie ihre Passphrase ein"
 }
