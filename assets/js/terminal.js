@@ -136,6 +136,12 @@ function loadTerminalVariables() {
     document.documentElement.style.setProperty('--terminal-font-size', tlibo["font-name"].split(" ")[1] + "pt");
     document.documentElement.style.setProperty('--terminal-color', tlibo["color"]);
     document.documentElement.style.setProperty('--terminal-bg', tlibo["background-color"]);
+    libs.find(a => a["package.name"] === "de.dzcloud.options").option["is-sudo"] = false;
+    saveChanges();
+}
+
+function saveChanges() {
+    localStorage.setItem("terminalrc", JSON.stringify(libs))
 }
 
 document.addEventListener("click", () => {
