@@ -9,7 +9,7 @@ if (!libs) {
 
 var lang = {}
 var username = libs.find(a => a["package.name"] === "de.dzcloud.options").option.username || "user";
-var computername = libs.find(a => a["package.name"] === "de.dzcloud.options").option["pc-name"] || "Ubuntu2404LTS"
+var computername = libs.find(a => a["package.name"] === "de.dzcloud.options").option["pc-name"] || "Unloaded"
 var userLang = libs.find(a => a["package.name"] === "de.dzcloud.terminal").option.language || "en";
 
 document.getElementById("terminal-username").innerText = username;
@@ -33,7 +33,7 @@ function processCommand(command) {
     // Basic command handling
     switch (args[0]) {
         case 'help':
-            printToTerminal('Available commands: help, clear, echo, git');
+            printToTerminal('Available commands: help, clear, echo');
             break;
         case 'clear':
             terminal.innerHTML = '';
