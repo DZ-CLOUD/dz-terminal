@@ -84,3 +84,7 @@ Now you can type in the command in the terminal. If not changed its appCommand.
 appCommand
 ```
 Executing runs the loadLib function and import your script and executes your script.
+
+## More Informations
+Informations are in the Wiki under [GitHub Wiki](https://github.com/DZ-CLOUD/dz-terminal/wiki)
+LICENSED is this project with MIT
