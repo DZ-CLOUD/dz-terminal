@@ -1,5 +1,10 @@
 {
     "terminal.error.command.notfound": "%s: Befehl nicht gefunden",
     "terminal.error.passphase.invalid": "Zugriff verweigert: Passphase ist ungültig.",
-    "terminal.promt.enter.passphase": "Geben Sie ihre Passphrase ein"
+    "terminal.error.password.notmatch": "Änderung fehlgeschlagen: Passwort stimmt nicht überein",
+    "terminal.error.password.invalid": "Zugriff verweigert: Passwort ist ungültig.",
+    "terminal.promt.enter.passphase": "Geben Sie ihre Passphrase ein",
+    "terminal.promt.enter.current.password": "Geben Sie das aktuelle Passwort ein",
+    "terminal.promt.enter.new.password": "Geben Sie ein neues Passwort ein",
+    "terminal.promt.confirm.password": "Neues Passwort bestätigen"
 }

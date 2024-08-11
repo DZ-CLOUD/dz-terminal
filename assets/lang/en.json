@@ -1,5 +1,10 @@
 {
     "terminal.error.command.notfound": "%s: command not found",
     "terminal.error.passphase.invalid": "Access denied: Passphase is invalid.",
-    "terminal.promt.enter.passphase": "Enter passphase"
+    "terminal.error.password.notmatch": "Change denied: Pasword doesn't match",
+    "terminal.error.password.invalid": "Access denied: Password is invalid.",
+    "terminal.promt.enter.passphase": "Enter passphase",
+    "terminal.promt.enter.current.password": "Enter the current password",
+    "terminal.promt.enter.new.password": "Enter new password",
+    "terminal.promt.confirm.password": "Confirm new password"
 }
