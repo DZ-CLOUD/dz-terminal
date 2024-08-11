@@ -35,7 +35,7 @@ export function processCommand(command) {
     // Useing args is a easier way to process commands
     const args = command.split(" ");
 
-    // Example: command contains appName value
+    // Example: command contains "appName value"
     // Args is an array: ["appName", "value"]
 
     let myPackage = libs.find(packages => packages.command === args[0]); // Find your package useing your command
@@ -53,3 +53,34 @@ export function processCommand(command) {
     }
 }
 ```
+
+### Adding your library
+That it now you need to add your package to the apt.json.
+Copy the code if needed:
+```
+    {
+        "command": "appCommand",
+        "package.version": "appVersion",
+        "package.name": "com.username.appName",
+        "package.size": 0,
+        "package.author": "Username"
+    }
+```
+
+### Install libraries (dzpkm)
+After you did that enter the following command in to the terminal on your localhost
+```
+    dzpkm install com.username.appName
+```
+
+What does the command:
+- The first argument is "dzpkm" this is the package manager, where you can uninstall and install packages from the apt.json
+- Second the install argument says that the dzpkm has to install a package
+- Last argument is the package
+
+### Use your library
+Now you can type in the command in the terminal. If not changed its appCommand.
+```
+    appCommand
+```
+executing runs the loadLib function and import your script and executes your script.
