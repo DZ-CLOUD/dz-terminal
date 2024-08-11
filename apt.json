@@ -1,0 +1,39 @@
+{
+    "libs":[
+        {
+            "command": "self",
+            "package.version": "1.8.3",
+            "package.name": "de.dzcloud.terminal",
+            "package.size": 231,
+            "package.author": "DZ Cloud"
+        },
+        {
+            "command": "setenv",
+            "package.version": "0.2.1",
+            "package.name": "de.dzcloud.setenv",
+            "package.size": 459,
+            "package.author": "DZ Cloud"
+        },
+        {
+            "command": "rm",
+            "package.version": "0.2.1",
+            "package.name": "terminal.command.rm",
+            "package.size": 24,
+            "package.author": "DZ Cloud"
+        },
+        {
+            "command": "sudo",
+            "package.version": "0.2.1",
+            "package.name": "terminal.command.sudo",
+            "package.size": 23,
+            "package.author": "DZ Cloud"
+        },
+        {
+            "command": "passwrd",
+            "package.version": "3.1",
+            "package.name": "terminal.command.passwrd",
+            "package.size": 21,
+            "package.author": "DZ Cloud"
+        }
+    ]
+}
