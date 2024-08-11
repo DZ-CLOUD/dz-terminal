@@ -58,19 +58,19 @@ export function processCommand(command) {
 That it now you need to add your package to the apt.json.
 Copy the code if needed:
 ```
-    {
-        "command": "appCommand",
-        "package.version": "appVersion",
-        "package.name": "com.username.appName",
-        "package.size": 0,
-        "package.author": "Username"
-    }
+{
+    "command": "appCommand",
+    "package.version": "appVersion",
+    "package.name": "com.username.appName",
+    "package.size": 0,
+    "package.author": "Username"
+}
 ```
 
 ### Install libraries (dzpkm)
 After you did that enter the following command in to the terminal on your localhost
 ```
-    dzpkm install com.username.appName
+dzpkm install com.username.appName
 ```
 
 What does the command:
