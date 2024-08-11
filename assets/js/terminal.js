@@ -38,7 +38,6 @@ function processCommand(command) {
         case 'clear':
             terminal.innerHTML = '';
             break;
-
         case 'echo':
             printToTerminal(command.slice(5));
         case 'restart':
