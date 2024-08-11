@@ -81,6 +81,6 @@ What does the command:
 ### Use your library
 Now you can type in the command in the terminal. If not changed its appCommand.
 ```
-    appCommand
+appCommand
 ```
-executing runs the loadLib function and import your script and executes your script.
+Executing runs the loadLib function and import your script and executes your script.
