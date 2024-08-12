@@ -38,9 +38,12 @@ function processCommand(command) {
         case 'clear':
             terminal.innerHTML = '';
             break;
-
         case 'echo':
-            printToTerminal(command.slice(5));
+            printToTerminal(command.slice(5));//Dont slice the command slice the args
+            break;
+        case 'exit':
+            window.close();
+            break;
         case 'restart':
             location.reload();
             break;
