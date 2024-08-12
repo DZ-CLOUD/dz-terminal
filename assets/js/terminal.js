@@ -39,7 +39,7 @@ function processCommand(command) {
             terminal.innerHTML = '';
             break;
         case 'echo':
-            printToTerminal(command.slice(5));//Dont slice the command slice the args
+            printToTerminal(args.slice(1).join(" "));//Dont slice the command slice the args
             break;
         case 'exit':
             window.close();
