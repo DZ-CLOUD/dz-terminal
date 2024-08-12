@@ -13,7 +13,7 @@
         },
         {
             "command": "terminal",
-            "package.version": "v1.0.0",
+            "package.version": "v1.8.12",
             "package.name": "de.dzcloud.terminal",
             "branch": "feature/DZT-0001",
             "option": {
