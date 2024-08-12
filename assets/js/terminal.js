@@ -2,6 +2,8 @@ const terminal = document.getElementById('terminal');
 const input = document.getElementById('input');
 
 const libs = JSON.parse(localStorage.getItem("terminalrc"));
+const commandHistory = JSON.parse(localStorage.getItem("commandHistory")) || [];
+
 if (!libs) {
     init();
     location.reload();
@@ -15,17 +17,11 @@ var userLang = libs.find(a => a["package.name"] === "de.dzcloud.terminal").optio
 document.getElementById("terminal-username").innerText = username;
 document.getElementById("terminal-pcname").innerText = computername;
 
-input.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        const command = input.value;
-        processCommand(command);
-        input.value = '';
-    }
-});
+
 
 function processCommand(command) {
     const args = command.split(" ");
-
+    
     const output = document.createElement('div');
     output.textContent = `${username}@${computername} ~ $ ${command}`;
     terminal.appendChild(output);
@@ -68,6 +64,10 @@ function processCommand(command) {
                 printToTerminal(`${lang["terminal.error.command.notfound"].replace("%s", args[0])}`);
             }
             break;
+    }
+
+    if (args !== "") {
+        addToHistory(command);
     }
 
     // Scroll to the bottom of the terminal
@@ -149,6 +149,52 @@ function saveChanges() {
 
 document.addEventListener("click", () => {
     input.focus();
+});
+
+function addToHistory(command) {
+    commandHistory.push(command);
+    saveCommandHistory();
+    return;
+}
+
+function saveCommandHistory() {
+    localStorage.setItem("commandHistory", JSON.stringify(commandHistory));
+    return;
+}
+
+let commandHistoryIndex = 0;
+
+function getFromHistory() {
+    input.value = commandHistory[commandHistoryIndex];
+    return;
+}
+input.addEventListener('keydown', (e) => {
+    switch (e.code) {
+        case "ArrowUp":
+            if (commandHistoryIndex > 0) {
+                commandHistoryIndex--;
+                getFromHistory();
+            }
+            break;
+        case "ArrowDown":
+            if (commandHistoryIndex < commandHistory.length - 1) {
+                commandHistoryIndex++;
+                getFromHistory();
+            } else {
+                input.value = '';
+            }
+            break;
+        case "Enter":
+            const command = input.value;
+            processCommand(command);
+            addToHistory(command);
+            input.value = '';
+            commandHistoryIndex = commandHistory.length;
+            break;
+
+        default:
+            break;
+    }
 });
 
 init()
