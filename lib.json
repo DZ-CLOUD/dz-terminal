@@ -41,13 +41,13 @@
         },
         {
             "command": "rm",
-            "version": "0.2.1",
+            "package.version": "0.2.1",
             "package.name": "terminal.command.rm",
             "package.size": 23
         },
         {
             "command": "sudo",
-            "version": "0.2.1",
+            "package.version": "0.2.1",
             "package.name": "terminal.command.sudo",
             "package.size": 23
         }
