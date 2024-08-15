@@ -2,6 +2,7 @@
     "libs": [
         {
             "package.version": "v1.0.0",
+            "package.author": "DZ Cloud",
             "package.name": "de.dzcloud.options",
             "branch": "feature/DZT-0004",
             "option": {
@@ -13,9 +14,10 @@
         },
         {
             "command": "terminal",
+            "package.author" : "DZ Cloud",
             "package.version": "v1.0.0",
             "package.name": "de.dzcloud.terminal",
-            "branch": "main",
+            "package.branch": "main",
             "option": {
                 "font-name": "monospace 11",
                 "color": "#ffffff",
@@ -28,28 +30,33 @@
         },
         {
             "command": "dzpkm",
+            "package.author" : "DZ Cloud",
             "package.version": "v128.9.1",
             "package.name": "de.dzcloud.dzpkm",
-            "branch": "latest/dzpkm-128.9.1"
+            "package.branch": "latest/dzpkm-128.9.1"
         },
         {
             "command": "setenv",
+            "package.author" : "DZ Cloud",
             "package.version": "0.2.1",
             "package.name": "de.dzcloud.setenv",
             "package.size": 459,
-            "branch": "release/stable-v0.2.1"
+            "package.branch": "release/stable-v0.2.1"
         },
         {
             "command": "rm",
-            "version": "0.2.1",
+            "package.version": "0.2.1",
             "package.name": "terminal.command.rm",
-            "package.size": 23
+            "package.size": 23,
+            "package.branch" : "release/stable-v0.2.1",
+            "package.author" : "DZ Cloud"
         },
         {
             "command": "sudo",
-            "version": "0.2.1",
+            "package.version": "0.2.1",
             "package.name": "terminal.command.sudo",
-            "package.size": 23
+            "package.size": 41,
+            "package.branch" : "release/stable-v0.2.1"
         }
     ]
 }
