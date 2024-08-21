@@ -57,6 +57,14 @@
             "package.name": "terminal.command.sudo",
             "package.size": 41,
             "package.branch" : "release/stable-v0.2.1"
+        },
+        {
+            "command": "baserc",
+            "package.version": "1.0",
+            "package.name": "terminal.command.baserc",
+            "package.size": 10,
+            "package.branch" : "release/stable-v1.0",
+            "package.author" : "DZ Cloud"
         }
     ]
 }

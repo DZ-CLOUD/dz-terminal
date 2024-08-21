@@ -44,7 +44,17 @@
             "command": "dzpkm",
             "package.version": "v128.9.1",
             "package.name": "de.dzcloud.dzpkm",
-            "package.branch": "latest/dzpkm-128.9.1"
+            "package.branch": "latest/dzpkm-128.9.1",
+            "package.author": "DZ Cloud",
+            "package.size" : 10
+        },
+        {
+            "command": "baserc",
+            "package.version": "1.0",
+            "package.name": "terminal.command.baserc",
+            "package.size": 10,
+            "package.branch" : "release/stable-v1.0",
+            "package.author" : "DZ Cloud"
         }
     ]
 }
